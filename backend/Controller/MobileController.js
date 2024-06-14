@@ -2,6 +2,7 @@ import bcrypt from "bcryptjs"; // Import bcrypt.js library
 // import Inventory from "../Model/MobilePhone.js"; // Make sure to import your User model correctly
 import Inventory from "../Model/Inventory.js";
 import mongoose from "mongoose";
+import Mobile from "../Model/Mobile.js";
 const decryptIMEIList = async (hashedIMEIList) => {
   try {
     // Decrypt each hashed IMEI in the list
@@ -432,5 +433,14 @@ export const getAllSoldItems = async (req, res) => {
     // Handle any errors
     console.error("Error fetching sold items:", error);
     res.status(500).json({ success: false, error: "Internal server error" });
+  }
+};
+
+export const getmobiles = async (req, res) => {
+  try {
+    const mobiles = await Mobile.find();
+    res.status(200).json(mobiles);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 };

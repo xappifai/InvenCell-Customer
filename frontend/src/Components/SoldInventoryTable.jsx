@@ -17,8 +17,7 @@ import {
   Fade,
 } from '@mui/material';
 import InfoIcon from '@mui/icons-material/Info';
-import baseurl from '../Assets/baseurl';
-
+import baseURL from '../Assets/baseurl';
 // Modal style
 const modalStyle = {
   position: 'absolute',
@@ -49,7 +48,7 @@ export default function SoldInventoryTable({ filter, search }) {
         const verifyToken = jwtDecode(token);
 
         const response = await axios.post(
-          `${baseurl}:5629/mobile/getsold`,
+          `${baseURL}:5629/mobile/getsold`,
           {
             Email: verifyToken.email,
             CNIC: verifyToken.cnic,

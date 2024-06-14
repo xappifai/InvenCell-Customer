@@ -8,7 +8,9 @@ import DatePicker from 'rsuite/DatePicker';
 import axios from 'axios';
 import MuiAlert from '@mui/material/Alert';
 import 'rsuite/DatePicker/styles/index.css';
-import baseurl from '../Assets/baseurl';
+import baseURL from '../Assets/baseurl';
+
+
 
 export default function AddStock() {
   const [password, setPassword] = useState('');
@@ -30,9 +32,10 @@ export default function AddStock() {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarSeverity, setSnackbarSeverity] = useState('success'); // 'success' or 'error'
   const [snackbarMessage, setSnackbarMessage] = useState('');
+  
 
   useEffect(() => {
-    axios.get(`${baseurl}:7018/api/mobile/`)
+    axios.get(`${baseURL}:5629/mobile/mobile`)
       .then(response => {
         const fetchedData = response.data;
         const transformedData = fetchedData.reduce((acc, item) => {
@@ -98,7 +101,7 @@ export default function AddStock() {
     };
 
     try {
-      const response = await fetch(`${baseurl}:5629/mobile/add`, {
+      const response = await fetch(`${baseURL}:5629/mobile/add`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -3,8 +3,7 @@ import { Card, CardContent, Typography } from '@mui/material';
 
 const ExpenseCard = ({ title, expenses, total}) => {
 
-  console.log(title)
-  console.log(expenses)
+
 
   return (
     <Card style={{height: '250px' ,display: 'flex', flexDirection: 'column', justifyContent: 'space-between', aspectRatio: '1 / 1' ,margin:'8px', width:'100%'}} sx={{ boxShadow: 3, padding: '20px' }}>

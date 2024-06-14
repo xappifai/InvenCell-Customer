@@ -7,7 +7,7 @@ import { BarChart } from '@mui/x-charts/BarChart';
 import axios from 'axios';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import baseurl from '../Assets/baseurl';
+import baseURL from '../Assets/baseurl';
 
 
 export default function UserGainChart() {
@@ -43,7 +43,7 @@ export default function UserGainChart() {
     let monthlyGainValue = 0; 
 
     try {
-      const todayPurchase = await axios.get(`${baseurl}:5629/mobile/getTodayPurchasing`, {
+      const todayPurchase = await axios.get(`${baseURL}:5629/mobile/getTodayPurchasing`, {
         headers: {
           authorization: `token ${token}` 
         }
@@ -54,7 +54,7 @@ export default function UserGainChart() {
     }
 
     try {
-      const weeklyPurchase = await axios.get(`${baseurl}:5629/mobile/getWeeklyPurchasing`, {
+      const weeklyPurchase = await axios.get(`${baseURL}:5629/mobile/getWeeklyPurchasing`, {
         headers: {
           authorization: `token ${token}` 
         }
@@ -65,7 +65,7 @@ export default function UserGainChart() {
     }
 
     try {
-      const monthlyPurchase = await axios.get(`${baseurl}:5629/mobile/getMonthlyPurchasing`, {
+      const monthlyPurchase = await axios.get(`${baseURL}:5629/mobile/getMonthlyPurchasing`, {
         headers: {
           authorization: `token ${token}` 
         }
@@ -76,7 +76,7 @@ export default function UserGainChart() {
     }
 
     try {
-      const todaySold = await axios.get(`${baseurl}:5629/mobile/getTodaySelling`, {
+      const todaySold = await axios.get(`${baseURL}:5629/mobile/getTodaySelling`, {
         headers: {
           authorization: `token ${token}` 
         }
@@ -87,7 +87,7 @@ export default function UserGainChart() {
     }
 
     try {
-      const weeklySold = await axios.get(`${baseurl}:5629/mobile/getWeeklySelling`, {
+      const weeklySold = await axios.get(`${baseURL}:5629/mobile/getWeeklySelling`, {
         headers: {
           authorization: `token ${token}` 
         }
@@ -98,7 +98,7 @@ export default function UserGainChart() {
     }
 
     try {
-      const monthlySold = await axios.get(`${baseurl}:5629/mobile/getMonthlySelling`, {
+      const monthlySold = await axios.get(`${baseURL}:5629/mobile/getMonthlySelling`, {
         headers: {
           authorization: `token ${token}` 
         }
@@ -109,7 +109,7 @@ export default function UserGainChart() {
     }
 
     try {
-      const todayExpense = await axios.get(`${baseurl}:5629/expense/getTodayExpense`, {
+      const todayExpense = await axios.get(`${baseURL}:5629/expense/getTodayExpense`, {
         headers: {
           authorization: `token ${token}` 
         }
@@ -120,7 +120,7 @@ export default function UserGainChart() {
     }
 
     try {
-      const weeklyExpense = await axios.get(`${baseurl}:5629/expense/getWeeklyExpense`, {
+      const weeklyExpense = await axios.get(`${baseURL}:5629/expense/getWeeklyExpense`, {
         headers: {
           authorization: `token ${token}` 
         }
@@ -131,7 +131,7 @@ export default function UserGainChart() {
     }
 
     try {
-      const monthlyExpense = await axios.get(`${baseurl}:5629/expense/getMonthlyExpense`, {
+      const monthlyExpense = await axios.get(`${baseURL}:5629/expense/getMonthlyExpense`, {
         headers: {
           authorization: `token ${token}` 
         }

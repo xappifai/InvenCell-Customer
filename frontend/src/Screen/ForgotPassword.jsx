@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import axios from "axios";
-import baseurl from "../Assets/baseurl";
+import config from '../Assets/baseurl';
 const ForgotPassword = () => {
     const [email, setEmail] = useState("");
     const [oldPassword, setOldPassword] = useState("");
@@ -33,7 +33,7 @@ const ForgotPassword = () => {
   
       setLoading(true);
       try {
-        const response = await axios.post(`${baseurl}:5629/api/forgot`, {
+        const response = await axios.post(`${config.baseurl}:${config.port1}/api/forgot`, {
           email,
           oldPassword,
           newPassword,

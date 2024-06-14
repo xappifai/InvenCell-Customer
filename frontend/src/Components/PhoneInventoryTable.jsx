@@ -30,7 +30,8 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import InfoIcon from '@mui/icons-material/Info';
 import CurrencyExchangeTwoToneIcon from '@mui/icons-material/CurrencyExchangeTwoTone';
 
-import baseurl from '../Assets/baseurl';
+import config from "../Assets/baseurl.js"
+import baseURL from '../Assets/baseurl.js';
 
 // Modal style
 const modalStyle = {
@@ -146,7 +147,7 @@ export default function PhoneInventoryTable({ open, filter, setFilter, onClose, 
             }
 
             const verifyToken = jwtDecode(token);
-            const response = await axios.post(`${baseurl}:5629/mobile/get`, {
+            const response = await axios.post(`${baseURL}:5629/mobile/get`, {
                 Email: verifyToken.email,
                 CNIC: verifyToken.cnic,
             }, {
@@ -209,7 +210,7 @@ export default function PhoneInventoryTable({ open, filter, setFilter, onClose, 
     };
     
     try {
-      const response = await axios.post(`${baseurl}:5629/mobile/marksold`, data, {
+      const response = await axios.post(`${baseURL}:5629/mobile/marksold`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
@@ -250,7 +251,7 @@ export default function PhoneInventoryTable({ open, filter, setFilter, onClose, 
     };
   
     try {
-      const response = await fetch(`${baseurl}:5629/mobile/add`, {
+      const response = await fetch(`${baseURL}:5629/mobile/add`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -271,7 +272,7 @@ export default function PhoneInventoryTable({ open, filter, setFilter, onClose, 
   
     // Generate and download the PDF invoice
     const invoiceData = {
-      date: new Date(soldDate).toLocaleDateString(),
+      date: formatDate(new Date(soldDate).toDateString()),
       
       billTo: {
         name: exchangeDetails.CustomerName,
@@ -337,7 +338,7 @@ export default function PhoneInventoryTable({ open, filter, setFilter, onClose, 
     };
 
     try {
-        const response = await axios.post(`${baseurl}:5629/mobile/marksold`, data, {
+        const response = await axios.post(`${baseURL}:5629/mobile/marksold`, data, {
             headers: {
                 Authorization: `Bearer ${token}`,
                 'Content-Type': 'application/json',
@@ -351,8 +352,8 @@ export default function PhoneInventoryTable({ open, filter, setFilter, onClose, 
           
 
             const invoiceData = {
-              date: new Date(soldDate).toLocaleDateString(),
-              invoiceNo: '1234', // You can generate a unique invoice number
+              date: formatDate(new Date(soldDate)),
+              invoiceNo: Date.now(), 
               billTo: {
                 name: customerName,
                 phoneNumber: customerPhoneNumber,
@@ -418,7 +419,7 @@ export default function PhoneInventoryTable({ open, filter, setFilter, onClose, 
 
   
   useEffect(() => {
-    axios.get(`${baseurl}:7018/api/mobile/`)
+    axios.get(`${baseURL}:5629/mobile/mobile`)
       .then(response => {
         const fetchedData = response.data;
         // Transform the fetched data to match the structure of your hardcoded brandModels

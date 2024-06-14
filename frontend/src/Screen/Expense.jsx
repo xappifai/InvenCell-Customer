@@ -16,7 +16,7 @@ import axios from 'axios';
 import DeleteIcon from '@mui/icons-material/Delete';
 import SyncAltIcon from '@mui/icons-material/SyncAlt';
 import ExpenseCard from '../Components/ExpenseCard';
-import baseurl from '../Assets/baseurl';
+import baseURL from '../Assets/baseurl';
 
 export default function Expense() {
 
@@ -50,7 +50,7 @@ export default function Expense() {
     let monthly = [];
 
     try{
-      const todayResponse = await axios.get(`${baseurl}:5629/expense/getlisttodayExpense`, {
+      const todayResponse = await axios.get(`${baseURL}:5629/expense/getlisttodayExpense`, {
         headers: {
           authorization: `token ${token}` 
         }
@@ -63,7 +63,7 @@ export default function Expense() {
     }
     
     try{
-      const weeklyResponse = await axios.get(`${baseurl}:5629/expense/getlistWeeklyExpense`, {
+      const weeklyResponse = await axios.get(`${baseURL}:5629/expense/getlistWeeklyExpense`, {
         headers: {
           authorization: `token ${token}` 
         }
@@ -75,7 +75,7 @@ export default function Expense() {
       console.log('theres an error in listing weekly expense');
     }
     try{
-      const monthlyResponse = await axios.get(`${baseurl}:5629/expense/getlistMonthlyExpense`, {
+      const monthlyResponse = await axios.get(`${baseURL}:5629/expense/getlistMonthlyExpense`, {
         headers: {
           authorization: `token ${token}` 
         }
@@ -104,7 +104,7 @@ export default function Expense() {
     let  monthly = 0;
 
     try{
-      const todayTotal = await axios.get(`${baseurl}:5629/expense/getTodayExpense`, {
+      const todayTotal = await axios.get(`${baseURL}:5629/expense/getTodayExpense`, {
         headers: {
           authorization: `token ${token}` 
         }
@@ -117,7 +117,7 @@ export default function Expense() {
     }
 
     try{
-      const weeklyTotal = await axios.get(`${baseurl}:5629/expense/getWeeklyExpense`, {
+      const weeklyTotal = await axios.get(`${baseURL}:5629/expense/getWeeklyExpense`, {
         headers: {
           authorization: `token ${token}` 
         }
@@ -130,7 +130,7 @@ export default function Expense() {
     }
       
     try{
-      const monthlyTotal = await axios.get(`${baseurl}:5629/expense/getMonthlyExpense`, {
+      const monthlyTotal = await axios.get(`${baseURL}:5629/expense/getMonthlyExpense`, {
         headers: {
           authorization: `token ${token}` 
         }
@@ -152,7 +152,7 @@ export default function Expense() {
     const token = localStorage.getItem('token');
 
     if(description !== '' && amount > 0){
-      const response = await axios.post(`${baseurl}:5629/expense/add`, {amount: amount, description: description}, {
+      const response = await axios.post(`${baseURL}:5629/expense/add`, {amount: amount, description: description}, {
         headers: {
           authorization: `token ${token}` 
         }
@@ -171,7 +171,7 @@ export default function Expense() {
   const DeleteExpense = async (id) => {
     const token = localStorage.getItem('token');
 
-    const response = await axios.delete(`${baseurl}:5629/expense/delete/${id}`, {
+    const response = await axios.delete(`${baseURL}:5629/expense/delete/${id}`, {
       headers: {
         authorization: `token ${token}` 
       }
@@ -188,7 +188,7 @@ export default function Expense() {
       const token = localStorage.getItem('token');
 
       if(updateDesc !== '' && updateAmount > 0){
-        const response = await axios.put(`${baseurl}:5629/expense/update/${updateId}`, {amount: updateAmount, description: updateDesc} ,{
+        const response = await axios.put(`${baseURL}:5629/expense/update/${updateId}`, {amount: updateAmount, description: updateDesc} ,{
           headers: {
             authorization: `token ${token}` 
           }

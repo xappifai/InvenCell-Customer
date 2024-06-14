@@ -8,7 +8,8 @@ import ReactSearchBox from 'react-search-box';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import '../Styles/style.css';
-import baseurl from '../Assets/baseurl';
+import baseURL from '../Assets/baseurl';
+
 
 export default function SectionContainer(props) {
   const { title, showFilter, showSearch, filter, onFilterChange } = props;
@@ -34,7 +35,7 @@ export default function SectionContainer(props) {
   
   // Models for each brand
   useEffect(() => {
-    axios.get(`${baseurl}:7018/api/mobile/`)
+    axios.get(`${baseURL}:5629/mobile/mobile`)
       .then(response => {
         const fetchedData = response.data;
         // Transform the fetched data to only include brand and model
