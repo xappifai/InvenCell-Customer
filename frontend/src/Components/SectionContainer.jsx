@@ -35,7 +35,7 @@ export default function SectionContainer(props) {
   
   // Models for each brand
   useEffect(() => {
-    axios.get(`${baseURL}:5629/mobile/mobile`)
+    axios.get(`${baseURL}/mobile/mobile`)
       .then(response => {
         const fetchedData = response.data;
         // Transform the fetched data to only include brand and model

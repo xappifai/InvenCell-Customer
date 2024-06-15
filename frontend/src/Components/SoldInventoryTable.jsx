@@ -48,7 +48,7 @@ export default function SoldInventoryTable({ filter, search }) {
         const verifyToken = jwtDecode(token);
 
         const response = await axios.post(
-          `${baseURL}:5629/mobile/getsold`,
+          `${baseURL}/mobile/getsold`,
           {
             Email: verifyToken.email,
             CNIC: verifyToken.cnic,

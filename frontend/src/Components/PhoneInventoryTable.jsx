@@ -147,7 +147,7 @@ export default function PhoneInventoryTable({ open, filter, setFilter, onClose, 
             }
 
             const verifyToken = jwtDecode(token);
-            const response = await axios.post(`${baseURL}:5629/mobile/get`, {
+            const response = await axios.post(`${baseURL}/mobile/get`, {
                 Email: verifyToken.email,
                 CNIC: verifyToken.cnic,
             }, {
@@ -210,7 +210,7 @@ export default function PhoneInventoryTable({ open, filter, setFilter, onClose, 
     };
     
     try {
-      const response = await axios.post(`${baseURL}:5629/mobile/marksold`, data, {
+      const response = await axios.post(`${baseURL}/mobile/marksold`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
@@ -251,7 +251,7 @@ export default function PhoneInventoryTable({ open, filter, setFilter, onClose, 
     };
   
     try {
-      const response = await fetch(`${baseURL}:5629/mobile/add`, {
+      const response = await fetch(`${baseURL}/mobile/add`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -338,7 +338,7 @@ export default function PhoneInventoryTable({ open, filter, setFilter, onClose, 
     };
 
     try {
-        const response = await axios.post(`${baseURL}:5629/mobile/marksold`, data, {
+        const response = await axios.post(`${baseURL}/mobile/marksold`, data, {
             headers: {
                 Authorization: `Bearer ${token}`,
                 'Content-Type': 'application/json',
@@ -419,7 +419,7 @@ export default function PhoneInventoryTable({ open, filter, setFilter, onClose, 
 
   
   useEffect(() => {
-    axios.get(`${baseURL}:5629/mobile/mobile`)
+    axios.get(`${baseURL}/mobile/mobile`)
       .then(response => {
         const fetchedData = response.data;
         // Transform the fetched data to match the structure of your hardcoded brandModels

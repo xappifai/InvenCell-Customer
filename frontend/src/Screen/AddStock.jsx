@@ -35,7 +35,7 @@ export default function AddStock() {
   
 
   useEffect(() => {
-    axios.get(`${baseURL}:5629/mobile/mobile`)
+    axios.get(`${baseURL}/mobile/mobile`)
       .then(response => {
         const fetchedData = response.data;
         const transformedData = fetchedData.reduce((acc, item) => {
@@ -101,7 +101,7 @@ export default function AddStock() {
     };
 
     try {
-      const response = await fetch(`${baseURL}:5629/mobile/add`, {
+      const response = await fetch(`${baseURL}/mobile/add`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
