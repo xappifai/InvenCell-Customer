@@ -98,7 +98,9 @@ export default function AddStock() {
       PurchaserCNIC: verifyToken.cnic,
       PurchaserAddress: verifyToken.address,
       PurchaserPhoneNumber: verifyToken.phoneNumber,
+      SellingPrice:0
     };
+    console.log(requestBody)
 
     try {
       const response = await fetch(`${baseURL}/mobile/add`, {

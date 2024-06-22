@@ -1,5 +1,5 @@
 import bcrypt from "bcryptjs"; // Import bcrypt.js library
-// import Inventory from "../Model/MobilePhone.js"; // Make sure to import your User model correctly
+
 import Inventory from "../Model/Inventory.js";
 import mongoose from "mongoose";
 import Mobile from "../Model/Mobile.js";
@@ -198,7 +198,6 @@ export const totalMonthlyPurchasing = async (req, res) => {
     res.status(500).json({ success: false, error: "Internal Server Error" });
   }
 };
-
 export const addItemToInventory = async (req, res) => {
   try {
     const {
@@ -223,6 +222,16 @@ export const addItemToInventory = async (req, res) => {
       PurchaserPhoneNumber,
     } = req.body;
 
+    // Validate required fields
+    if (!Email || !CNIC || !BrandName || !Color || !Model || !PurchasingPrice || !NetworkStatus || !Storage || !IMEIList || !PurchaseDate || !CustomerName || !CustomerCNIC || !CustomerAddress || !CustomerPhoneNumber || !PurchaserName || !PurchaserCNIC || !PurchaserAddress || !PurchaserPhoneNumber) {
+      return res.status(400).json({ success: false, error: "All fields are required" });
+    }
+
+    // Convert data types
+    const purchasingPrice = Number(PurchasingPrice);
+    const sellingPrice = Number(SellingPrice);
+    const purchaseDate = new Date(PurchaseDate);
+
     // Create customer details
     const customerDetails = {
       Name: CustomerName,
@@ -244,26 +253,22 @@ export const addItemToInventory = async (req, res) => {
       BrandName,
       Color,
       Model,
-      PurchasingPrice,
+      PurchasingPrice: purchasingPrice,
       NetworkStatus,
       Storage,
       IMEIList,
-      PurchaseDate,
-      SellingPrice,
-
+      PurchaseDate: purchaseDate,
+      SellingPrice: sellingPrice,
       Customer: customerDetails,
       Purchaser: purchaserDetails,
     };
 
+    console.log("New Mobile Entry:", newMobileEntry);
+
     // Check for duplicate IMEI numbers
-    const duplicateIMEI = await Inventory.findOne({
-      "Mobile.IMEIList": { $in: IMEIList },
-    });
+    const duplicateIMEI = await Inventory.findOne({ "Mobile.IMEIList": { $in: IMEIList } });
     if (duplicateIMEI) {
-      return res.status(400).json({
-        success: false,
-        error: "One or more IMEI numbers are already in use.",
-      });
+      return res.status(400).json({ success: false, error: "One or more IMEI numbers are already in use." });
     }
 
     // Check if the inventory item already exists
@@ -281,6 +286,8 @@ export const addItemToInventory = async (req, res) => {
       });
     }
 
+    console.log("Inventory Item:", inventoryItem);
+
     // Save the inventory item
     await inventoryItem.save();
 
@@ -291,6 +298,7 @@ export const addItemToInventory = async (req, res) => {
     res.status(500).json({ success: false, error: "Internal Server Error" });
   }
 };
+
 // controllers/inventoryController.js
 
 export const getAllInventoryOfUser = async (req, res) => {

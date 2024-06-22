@@ -102,7 +102,7 @@ export default function SoldInventoryTable({ filter, search }) {
         <TableCell>{row.BrandName}</TableCell>
         <TableCell>{row.Model}</TableCell>
         <TableCell>{row.Color}</TableCell>
-        <TableCell>{row.SellingPrice}</TableCell>
+        <TableCell>{row.SellingPrice.toLocaleString()}</TableCell>
         <TableCell>{row.NetworkStatus}</TableCell>
         <TableCell>{row.PurchaseDate}</TableCell>
         <TableCell>

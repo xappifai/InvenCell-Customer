@@ -301,6 +301,7 @@ export default function PhoneInventoryTable({ open, filter, setFilter, onClose, 
         },
       ] : [],
       totalAmount: exchangeDetails.oldPhonePrice - exchangeDetails.newPhonePrice,
+      
     };
     setSnackbarMessage('Phone Exchaned Successfully');
     
@@ -494,7 +495,7 @@ export default function PhoneInventoryTable({ open, filter, setFilter, onClose, 
           <TableCell>{row.BrandName || 'N/A'}</TableCell>
           <TableCell>{row.Model || 'N/A'}</TableCell>
           <TableCell>{row.Color || 'N/A'}</TableCell>
-          <TableCell>{row.PurchasingPrice || 'N/A'}</TableCell>
+          <TableCell>{row.PurchasingPrice.toLocaleString() || 'N/A'}</TableCell>
           <TableCell>{row.NetworkStatus || 'N/A'}</TableCell>
           <TableCell>{row.Storage || 'N/A'}</TableCell>
           <TableCell>{row.PurchaseDate ? new Date(row.PurchaseDate).toLocaleDateString() : 'N/A'}</TableCell>
@@ -852,7 +853,7 @@ export default function PhoneInventoryTable({ open, filter, setFilter, onClose, 
           margin="normal"
           fullWidth
           label="Difference"
-          value={difference}
+          value={difference.toLocaleString()}
           disabled
         />
         <TextField
