@@ -1,2 +1,3 @@
 const baseURL = "https://inven-cell.com"
 export default baseURL;
+//The code is added to work with prod mode...
