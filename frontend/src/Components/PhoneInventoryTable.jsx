@@ -272,6 +272,7 @@ export default function PhoneInventoryTable({ open, filter, setFilter, onClose, 
     }
   
     // Generate and download the PDF invoice
+    console.log(soldDate)
     const invoiceData = {
       date: formatDate(new Date(soldDate).toDateString()),
       

@@ -263,7 +263,7 @@ export const addItemToInventory = async (req, res) => {
       Purchaser: purchaserDetails,
     };
 
-    console.log("New Mobile Entry:", newMobileEntry);
+
 
     // Check for duplicate IMEI numbers
     const duplicateIMEI = await Inventory.findOne({ "Mobile.IMEIList": { $in: IMEIList } });
@@ -286,7 +286,7 @@ export const addItemToInventory = async (req, res) => {
       });
     }
 
-    console.log("Inventory Item:", inventoryItem);
+    
 
     // Save the inventory item
     await inventoryItem.save();

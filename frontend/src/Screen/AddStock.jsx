@@ -100,7 +100,7 @@ export default function AddStock() {
       PurchaserPhoneNumber: verifyToken.phoneNumber,
       SellingPrice:0
     };
-    console.log(requestBody)
+    
 
     try {
       const response = await fetch(`${baseURL}/mobile/add`, {

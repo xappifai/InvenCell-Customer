@@ -1,2 +1,2 @@
-const baseURL = "http://localhost:5629";
+const baseURL = "https://inven-cell.com"
 export default baseURL;
