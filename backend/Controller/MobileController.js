@@ -229,7 +229,7 @@ export const addItemToInventory = async (req, res) => {
 
     // Convert data types
     const purchasingPrice = Number(PurchasingPrice);
-    const sellingPrice = Number(SellingPrice);
+    const sellingPrice = Number(0);
     const purchaseDate = new Date(PurchaseDate);
 
     // Create customer details

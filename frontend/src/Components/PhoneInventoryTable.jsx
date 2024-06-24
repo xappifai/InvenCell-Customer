@@ -208,6 +208,7 @@ export default function PhoneInventoryTable({ open, filter, setFilter, onClose, 
       CustomerAddress: exchangeDetails.CustomerAddress,
       CustomerPhoneNumber: exchangeDetails.CustomerPhoneNumber,
     };
+    console.log(data)
     
     try {
       const response = await axios.post(`${baseURL}/mobile/marksold`, data, {
@@ -249,7 +250,7 @@ export default function PhoneInventoryTable({ open, filter, setFilter, onClose, 
       PurchaserAddress: verifyToken.address,
       PurchaserPhoneNumber: verifyToken.phoneNumber,
     };
-  
+  console.log(requestBody)
     try {
       const response = await fetch(`${baseURL}/mobile/add`, {
         method: 'POST',
